@@ -8,7 +8,9 @@ function App() {
     
     <div className="App">
       <div id='bg'></div>
+      <div className='container'>
       <Jobs jobs={data}/>
+      </div>
     </div>
   );
 }
