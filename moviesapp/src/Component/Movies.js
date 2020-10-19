@@ -9,10 +9,10 @@ import StarRatingComponent from 'react-star-rating-component';
 const Movies=(props)=>{
 
   const [show, setShow] = useState(false);
-  const [titre, settitre]=useState([])
-  const [photo, setphoto]=useState([])
-  const [resumee, setresumee]=useState([])
-  const [rating, setrating]=useState([])
+  const [titre, setTitre]=useState([])
+  const [photo, setPhoto]=useState([])
+  const [resume, setResume]=useState([])
+  const [rating, setRating]=useState(2)
 
   const handleClose = () => {
       setShow(false);
@@ -20,11 +20,10 @@ const Movies=(props)=>{
     };
   const handleShow = (el) => {
       setShow(true);
-      titre.push(el.name);
-      photo.push(el.image);
-      resumee.push(el.resume);
-      rating.push(el.rating);
-
+      setTitre(el.name)
+      setPhoto(el.image);
+      setResume(el.resume);
+      setRating(el.rating);
     };
    
      
@@ -32,22 +31,23 @@ const Movies=(props)=>{
     return(
         <React.Fragment>
              <section className="results" >
-                {props.movieList.map((el) => {
+                {props.movieList.map((el,index) => {
                         return(
-                            <>
+                            <React.Fragment key={index}>
                                 <div className="result"  onClick={()=>handleShow(el)}>
                                     <img src={el.image} style={{height: 'auto', width: 250, alignItems:'center'}} />
                                     <h3>{el.name}</h3>
                                 </div> 
                                 <div>
                             <StarRatingComponent
+                            name="ratel"
                             value={el.rating}
-                            starCount={"5"}
+                            starCount={5}
                             starColor={"#ffb400"}
                              emptyStarColor={"#333"}
                               />
                               </div>
-                            </>
+                            </React.Fragment >
                         );
                     })
                 }
@@ -65,10 +65,10 @@ const Movies=(props)=>{
                         <br></br>
                        <div style={{marginLeft:10,marginTop:20}}>
                            <b style={{color: 'BLACK'}}>Rating:</b>
-                       <StarRatingComponent precision={0.5} value={rating} name={rating} style={{marginTop:50,marginLeft:-30  }}/>
+                       <StarRatingComponent precision={0.5} value={rating} name="retel" style={{marginTop:50,marginLeft:-30  }}/>
                        </div>
                     </Row>
-                   <p><b style={{color: 'BLACK'}}>resume:</b> {resumee}</p>
+                   <p><b style={{color: 'BLACK'}}>resume:</b> {resume}</p>
                 </Modal.Body>
              </Modal>
         </React.Fragment>

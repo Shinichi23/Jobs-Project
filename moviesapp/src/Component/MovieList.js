@@ -14,7 +14,6 @@ const MovieList=()=>{
 
     const [keyword, setKeyword] = useState("");
     const [search, setSearch] = useState(1);
-   
     const [movieList, setmovieList] = useState([
         {
           name: "One Piece Stampede",

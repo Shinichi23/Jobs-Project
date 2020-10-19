@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 //import api from './Api';
 import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
@@ -15,8 +15,8 @@ export default function ChartTest() {
         await axios.get('https://disease.sh/v3/covid-19/historical/Algeria?lastdays=30')
           .then ( response => {
             for ( let dataObj of response.data ) {
-              confirmedCases.push(parseInt(dataObj.Cases));
-              let tempDate = new Date (dataObj.Date);
+              confirmedCases.push(parseInt(dataObj.timeline.cases));
+              let tempDate = new Date (dataObj.timeline.cases.date);
               dateOfCases.push(tempDate.getUTCDate());
             }
         }); 
